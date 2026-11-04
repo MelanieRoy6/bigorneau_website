@@ -15,9 +15,9 @@ Premier jet du **design** (validé), avant le développement Angular.
 
 ## Direction artistique
 
-- Affiche de voyage sobre : papier chaud, bleu nuit, ocre, un seul accent vermillon.
+- Palette tirée de la scène d'intro : ciel `#ece0c4`, eau `#2e6f8e`, soleil `#f2c879`, ocre `#e3a72f`, vermillon `#b03d25` (petits textes) / `#d8553a` (décors), bleu nuit `#0e1a2b`.
 - Titres en Fraunces 800, texte en Instrument Sans.
-- Scène d'intro en SVG + CSS pur (aucune bibliothèque d'animation).
+- Scène d'intro en SVG + CSS pur (aucune bibliothèque d'animation), route du Gois en perspective.
 
 ## Intro (≈ 5 s)
 
@@ -28,9 +28,16 @@ Premier jet du **design** (validé), avant le développement Angular.
 
 `prefers-reduced-motion` désactive toutes les animations.
 
+## Contenu
+
+- Toutes les épreuves se jouent en binôme ; binômes tirés au sort en début de week-end.
+- Épreuves imaginées chaque année par les vainqueurs de l'édition précédente, qui remettent leur trophée en jeu.
+- Épreuves : crachat de bigorneau (démo animée), passage de relais de bigorneaux à la cuillère, Save Nono le bigorneau, et d'autres.
+- Le reste du week-end : concert de rock dans la grange, rugby improvisé, muscadet.
+
 ## À compléter (marqué entre crochets dans le design)
 
-Épreuves 2 à 4, record du crachat, lien d'inscription, participation.
+Programme complet des épreuves, record du crachat, lien d'inscription, participation.
 Lieu « Beauvoir-sur-Mer » : repris des éditions précédentes, à confirmer.
 
 ## Structure Angular prévue
@@ -41,5 +48,5 @@ src/app/
 ├─ app.config.ts
 ├─ core/event.config.ts
 ├─ shared/{button,reveal.directive.ts}
-└─ features/{hero-scene,info-band,olympiades,editions,join}
+└─ features/{hero-scene,info-band,olympiades,weekend,editions,join}
 ```
