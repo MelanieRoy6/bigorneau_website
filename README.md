@@ -15,18 +15,17 @@ Premier jet du **design** (validé), avant le développement Angular.
 
 ## Direction artistique
 
-- Palette tirée de la scène d'intro : ciel `#ece0c4`, eau `#2e6f8e`, soleil `#f2c879`, ocre `#e3a72f`, vermillon `#b03d25` (petits textes) / `#d8553a` (décors), bleu nuit `#0e1a2b`.
-- Titres en Fraunces 800, texte en Instrument Sans.
-- Scène d'intro en SVG + CSS pur (aucune bibliothèque d'animation), route du Gois en perspective.
+- Style affiche de voyage en aplats (pêche, lavande, turquoise), inspiré d'affiches du Gois.
+- Palette : encre `#2b1d5e`, mer `#12707c`, papier `#ffe3d3`, soleil `#ffd27a`, ocre `#f2a844`, vermillon `#b8352c` (petits textes) / `#e0503f` (décors).
+- Titres en Fraunces 800 (capitales), texte en Instrument Sans.
+- Scène d'intro en SVG + CSS pur (aucune bibliothèque d'animation), responsive : sur smartphone la scène est décalée pour garder le refuge dans le cadre.
 
-## Intro (≈ 5 s)
+## Motion design
 
-1. Compteur « Marée basse » 0 → 100 %, soleil qui se lève, route du Gois qui émerge.
-2. Canadair sur trajectoire courbe (`offset-path`), tracé de vol.
-3. Lâcher de 5 bigorneaux sur la route, en perspective.
-4. Titre dévoilé ligne par ligne, puis date et bouton d'inscription.
-
-`prefers-reduced-motion` désactive toutes les animations.
+- Intro (≈ 3 s) : compteur « Marée basse » 0 → 100 %, Canadair sur trajectoire courbe (`offset-path`) avec tracé de vol, lâcher de bigorneaux sur la route du Gois, titre révélé mot par mot (flou + montée).
+- Ambiance : nuages, mouettes et bulles en dérive lente, parallaxe au scroll.
+- Apparition au scroll (30 px, décalage de 0,1 s par élément), micro-interactions (survol, inclinaison 3D des affiches).
+- `prefers-reduced-motion` désactive toutes les animations.
 
 ## Contenu
 
