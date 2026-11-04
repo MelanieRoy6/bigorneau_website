@@ -4,27 +4,26 @@ Week-end du 5 juin 2027 · Beauvoir-sur-Mer · olympiades autour du crachat de b
 
 ## État
 
-Premier jet du **design** (validé), avant le développement Angular.
+Design **v2** (nouvelle direction artistique, validée), avant le développement Angular.
 
-- `design/Main.dc.html` : page bureau (1360 px), source du design.
+- `design/Main.dc.html` : page bureau (1440 px), source du design. Responsive : bureau, tablette (≤ 1100 px) et smartphone (≤ 760 px).
 - `design/Mobile.dc.html` : aperçu smartphone (390 px), même page.
 - `design/canvas.json` : disposition des maquettes.
-- `design/assets/` : mascotte, affiches des éditions 3 et 4, photos de référence du Gois.
-  Dans les maquettes, les images sont référencées par des liens internes (`/_blob/...`) :
-  pour le développement, utiliser les fichiers de ce dossier.
+- `design/assets/` : mascotte, affiches des éditions 3 et 4, photos de référence du Gois (les maquettes les référencent par `assets/...`).
 
 ## Direction artistique
 
-- Style affiche de voyage en aplats (pêche, lavande, turquoise), inspiré d'affiches du Gois.
-- Palette : encre `#2b1d5e`, mer `#12707c`, papier `#ffe3d3`, soleil `#ffd27a`, ocre `#f2a844`, vermillon `#b8352c` (petits textes) / `#e0503f` (décors).
-- Titres en Fraunces 800 (capitales), texte en Instrument Sans.
-- Scène d'intro en SVG + CSS pur (aucune bibliothèque d'animation), responsive : sur smartphone la scène est décalée pour garder le refuge dans le cadre.
+- Ton « fédération sportive pince-sans-rire » : règlement officiel (« Article 1 »), billet-dossard pour les infos, sections en alternance encre / sable / papier / orange.
+- **Scène d'intro inchangée** : affiche de voyage en aplats pêche, lavande et turquoise (soleil `#ffd27a`, mer `#46c4c6` → `#12707c`, ocre `#f2a844`, vermillon `#e0503f`), balise du Gois sur monticule rouge.
+- Reste du site : encre `#10222f`, papier `#f4efe5`, sable `#e6d6b8`, accent orange `#ee5a1f` (réglable).
+- Typographies : Big Shoulders 800/900 (capitales) pour les titres, Bricolage Grotesque pour le texte, DM Mono pour les étiquettes.
 
 ## Motion design
 
-- Intro (≈ 3 s) : compteur « Marée basse » 0 → 100 %, Canadair sur trajectoire courbe (`offset-path`) avec tracé de vol, lâcher de bigorneaux sur la route du Gois, titre révélé mot par mot (flou + montée).
+- Intro (≈ 3 s) : compteur « Marée basse » 0 → 100 %, soleil qui se lève, route du Gois qui émerge, Canadair sur trajectoire courbe (`offset-path`) avec tracé de vol, titre révélé mot par mot (flou + montée). Plus de bigorneaux sur la route.
+- Démo animée du crachat de bigorneau (gouttelettes, coquille, anneau d'impact, mètre ruban, drapeau « Record »).
 - Ambiance : nuages, mouettes et bulles en dérive lente, parallaxe au scroll.
-- Apparition au scroll (30 px, décalage de 0,1 s par élément), micro-interactions (survol, inclinaison 3D des affiches).
+- Apparition au scroll (30 px, décalage par élément), micro-interactions (survol, inclinaison 3D des affiches), le tout en CSS pur (`animation-timeline`).
 - `prefers-reduced-motion` désactive toutes les animations.
 
 ## Contenu
