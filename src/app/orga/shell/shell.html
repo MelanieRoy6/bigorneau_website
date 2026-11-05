@@ -4,19 +4,24 @@
       <span class="disp" style="font-size:1.8rem">Bigorneaux Party</span>
       <span class="mono">Espace orga</span>
     </a>
-    <nav class="og-nav" aria-label="Espace orga">
-      <a routerLink="/orga" routerLinkActive="on" [routerLinkActiveOptions]="{ exact: true }">Planning</a>
-      <a routerLink="/orga/infos" routerLinkActive="on">Infos</a>
+    <nav class="og-nav" [class.open]="menuOpen()" aria-label="Espace orga">
+      <a routerLink="/orga" routerLinkActive="on" [routerLinkActiveOptions]="{ exact: true }" (click)="menuOpen.set(false)">Planning</a>
+      <a routerLink="/orga/infos" routerLinkActive="on" (click)="menuOpen.set(false)">Infos</a>
       @if (auth.isAdmin()) {
-        <a routerLink="/orga/inscrits" routerLinkActive="on">Inscrits</a>
-        <a routerLink="/orga/tirage" routerLinkActive="on">Tirage</a>
-        <a routerLink="/orga/cotisations" routerLinkActive="on">Cotisations</a>
+        <a routerLink="/orga/inscrits" routerLinkActive="on" (click)="menuOpen.set(false)">Inscrits</a>
+        <a routerLink="/orga/tirage" routerLinkActive="on" (click)="menuOpen.set(false)">Tirage</a>
+        <a routerLink="/orga/cotisations" routerLinkActive="on" (click)="menuOpen.set(false)">Cotisations</a>
       }
     </nav>
     <div class="og-who">
       <span class="mono">{{ auth.firstName() ?? (auth.isAdmin() ? 'Admin' : '') }}</span>
       <button type="button" class="og-link" (click)="logout()">Déconnexion</button>
     </div>
+    <button type="button" class="og-burger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
   <router-outlet />
 </div>

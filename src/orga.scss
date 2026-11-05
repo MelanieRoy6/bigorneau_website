@@ -125,6 +125,25 @@ textarea.field{padding:14px 16px;min-height:110px}
 .og-login .card{background:var(--card);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--accent)}
 .og-page-narrow{max-width:1000px;margin:0 auto;padding:clamp(40px,8vw,96px) var(--gutter)}
 
+/* ---------- Menu burger (mobile) ---------- */
+.og-burger{display:none;flex-direction:column;justify-content:space-between;width:44px;height:44px;padding:11px 10px;background:none;border:2px solid rgba(255,255,255,.35);border-radius:10px;cursor:pointer;flex-shrink:0}
+.og-burger span{display:block;height:2px;background:var(--paper);border-radius:2px}
+.og-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.og-burger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.og-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+
+@media(max-width:768px){
+  .og-top{flex-wrap:wrap;align-items:center}
+  .og-brand{flex:1;order:1}
+  .og-who{order:2;font-size:.9rem}
+  .og-burger{display:flex;order:3}
+  .og-nav{order:10;flex-direction:column;width:100%;overflow:hidden;max-height:0;gap:4px;padding:0;border-top:0}
+  .og-nav.open{max-height:360px;padding:10px 0 6px;border-top:2px solid rgba(255,255,255,.2)}
+  .og-nav a{border-radius:12px}
+}
+
 @media (prefers-reduced-motion:no-preference){
   .og-bar i{transition:width .5s ease}
+  .og-burger span{transition:transform .25s ease,opacity .25s ease}
+  .og-nav{transition:max-height .3s ease,padding .15s ease}
 }

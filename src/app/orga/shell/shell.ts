@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Auth } from '../../core/auth';
 import { usePage } from '../../core/page';
@@ -12,6 +12,11 @@ import { usePage } from '../../core/page';
 export class OrgaShell {
   protected readonly auth = inject(Auth);
   private readonly router = inject(Router);
+  protected readonly menuOpen = signal(false);
+
+  protected toggleMenu(): void {
+    this.menuOpen.update(v => !v);
+  }
 
   constructor() {
     usePage('Espace orga — Bigorneaux Party', { noindex: true });
