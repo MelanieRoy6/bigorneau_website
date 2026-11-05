@@ -1,13 +1,33 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.html',
   styles: ``,
 })
 export class Home implements AfterViewInit {
+  isPlaying = false;
+  private audio: HTMLAudioElement | null = null;
+
+  toggleAudio() {
+    if (!this.audio) return;
+    if (this.isPlaying) {
+      this.audio.pause();
+      this.isPlaying = false;
+    } else {
+      this.audio.play();
+      this.isPlaying = true;
+    }
+  }
+
   ngAfterViewInit() {
+    this.audio = document.querySelector<HTMLAudioElement>('#bg-audio');
+    if (this.audio) {
+      this.audio.volume = 0.45;
+      this.audio.play().then(() => { this.isPlaying = true; }).catch(() => {});
+    }
     const els = Array.from(document.querySelectorAll('.reveal'));
     const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (calm || !els.length || !('IntersectionObserver' in window)) return;
