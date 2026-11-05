@@ -205,6 +205,7 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 .top-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:700;text-decoration:none;color:var(--accent-soft);transition:transform .25s ease}
 .top-link:hover{transform:translateY(-2px)}
 .legal{color:var(--muted);font-size:.95rem;line-height:1.4}
+.foot-faq{color:var(--muted);font-size:.95rem;a{color:var(--accent-soft);text-decoration:underline;text-underline-offset:3px;&:hover{color:var(--accent)}}}
 
 /* ---------- Reveal au scroll (fallback JS) ---------- */
 .js .reveal{opacity:0;translate:0 30px}
@@ -273,6 +274,29 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 .faq-a{padding:0 0 28px;display:flex;flex-direction:column;gap:12px}
 .faq-a p{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.6;max-width:68ch}
 .faq-more{margin-top:40px;font-size:1.1rem;line-height:1.5;max-width:44rem}
+
+/* FAQ header : titre + texte à gauche, mascotte à droite */
+.faq-header-wrap{display:flex;align-items:center;gap:clamp(24px,5vw,56px);margin-bottom:56px}
+.faq-header-text{flex:1 1 auto}
+.faq-eyebrow{opacity:.7}
+.faq-mascot{flex:0 0 auto;width:clamp(130px,18vw,240px);height:auto;filter:drop-shadow(4px 8px 0 rgba(0,0,0,.18))}
+@media(max-width:580px){.faq-header-wrap{flex-direction:column}.faq-mascot{width:clamp(100px,40vw,160px)}}
+
+/* FAQ page — fond orange, coloris inversés */
+.bp.faq-page{background:var(--accent);color:var(--paper)}
+.faq-page .reg-title{color:var(--ink)}
+.faq-page .faq-eyebrow{color:var(--ink)}
+.faq-page .faq-intro{color:var(--ink)}
+.faq-page .faq-list{border-top-color:rgba(16,34,47,.3)}
+.faq-page .faq-item{border-bottom-color:rgba(16,34,47,.3)}
+.faq-page .faq-q-t{color:var(--ink)}
+.faq-page .faq-q:focus-visible{outline-color:var(--ink)}
+.faq-page .faq-plus{background:var(--ink);border-color:var(--ink);box-shadow:0 3px 0 rgba(0,0,0,.25)}
+.faq-page .faq-plus::before,.faq-page .faq-plus::after{background:var(--paper)}
+.faq-page .faq-a p{color:var(--ink)}
+.faq-page .faq-more{color:var(--ink);a{color:var(--ink);font-weight:700}}
+.faq-page .btn{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.faq-page .btn:hover{box-shadow:0 6px 0 rgba(0,0,0,.25)}
 
 @media (prefers-reduced-motion:reduce){
   .bp *,.bp *::before,.bp *::after{animation:none !important;transition:none !important}
