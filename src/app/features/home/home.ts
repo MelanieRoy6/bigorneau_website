@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,11 @@ import { RouterLink } from '@angular/router';
 export class Home implements AfterViewInit {
   isPlaying = false;
   private audio: HTMLAudioElement | null = null;
+
+  constructor(private titleSvc: Title, private metaSvc: Meta) {
+    this.titleSvc.setTitle('Bigorneaux Party — 5ème édition · Olympiades au passage du Gois');
+    this.metaSvc.updateTag({ name: 'description', content: 'La Bigorneaux Party : olympiades en binôme, crachat de bigorneau, concert de rock et muscadet à gogo au passage du Gois, Beauvoir-sur-Mer. 5ème édition le week-end du 5 et 6 juin 2027.' });
+  }
 
   toggleAudio() {
     if (!this.audio) return;

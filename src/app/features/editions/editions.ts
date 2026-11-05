@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 interface Photo { src: string; alt: string; }
 
@@ -39,12 +40,14 @@ export class Editions implements OnInit {
   editionNum = '';
   photos: Photo[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private titleSvc: Title, private metaSvc: Meta) {}
 
   ngOnInit() {
     this.route.params.subscribe(p => {
       this.editionNum = p['id'] ?? '';
       this.photos = PHOTOS[this.editionNum] ?? [];
+      this.titleSvc.setTitle(`Édition ${this.editionNum} en photos — Bigorneaux Party`);
+      this.metaSvc.updateTag({ name: 'description', content: `Photos de la ${this.editionNum}ème édition de la Bigorneaux Party au passage du Gois, Beauvoir-sur-Mer.` });
     });
   }
 }

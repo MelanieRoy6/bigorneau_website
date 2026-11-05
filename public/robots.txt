@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bigorneau-party.vercel.app/sitemap.xml
