@@ -22,7 +22,6 @@ export class Inscription {
     last_name: ['', [Validators.required, Validators.maxLength(80)]],
     email: ['', [Validators.required, Validators.email, Validators.maxLength(200)]],
     phone: ['', [Validators.maxLength(30)]],
-    diet: ['', [Validators.maxLength(500)]],
     note: ['', [Validators.maxLength(1000)]],
     website: [''], // champ piège anti-robots : doit rester vide
   });
@@ -51,7 +50,6 @@ export class Inscription {
       last_name: v.last_name.trim(),
       email: v.email.trim(),
       phone: v.phone.trim() || null,
-      diet: v.diet.trim() || null,
       note: v.note.trim() || null,
     });
     this.busy.set(false);

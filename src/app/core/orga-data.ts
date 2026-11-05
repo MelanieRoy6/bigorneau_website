@@ -30,6 +30,12 @@ export class OrgaData {
     if (error) throw error;
   }
 
+  async addRegistration(payload: { first_name: string; last_name: string; email: string; phone: string | null; note: string | null }): Promise<Registration> {
+    const res = await supabase.from('registrations').insert({ ...payload, status: 'pending' }).select().single();
+    if (res.error) throw res.error;
+    return res.data as Registration;
+  }
+
   /** Comptes de connexion existants (pour savoir qui a déjà un accès). */
   async profiles(): Promise<Profile[]> {
     return unwrap(
