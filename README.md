@@ -48,3 +48,7 @@ src/app/
 ├─ shared/{button,reveal.directive.ts}
 └─ features/{hero-scene,info-band,olympiades,weekend,editions,join}
 ```
+
+## Espace orga
+
+Inscriptions, tirage au sort des repas, planning et cotisations : voir [`docs/ESPACE-ORGA.md`](docs/ESPACE-ORGA.md). Schéma de base dans `supabase/schema.sql`.

@@ -1,0 +1,108 @@
+<header class="og-hero">
+  <div class="og-in">
+    <p class="mono og-eyebrow">Administration</p>
+    <h1 class="disp og-h1">Les <span class="acc">cotisations</span></h1>
+    @if (error()) { <p class="og-msg err" role="alert">{{ error() }}</p> }
+    @if (info()) { <p class="og-msg good" role="status">{{ info() }}</p> }
+  </div>
+</header>
+
+@if (loading()) {
+  <main class="og-band sand after"><div class="og-in"><p class="og-lead" role="status">Chargement…</p></div></main>
+} @else {
+  <div class="og-ticket-wrap">
+    <div class="og-ticket-shadow">
+      <div class="og-ticket">
+        <div class="og-cell"><p class="mono">Ont versé</p><p class="disp">{{ counts().paid }} / {{ counts().total }}</p></div>
+        <div class="og-cell"><p class="mono">Partiels</p><p class="disp">{{ counts().partial }}</p></div>
+        <div class="og-cell"><p class="mono">En attente</p><p class="disp hot">{{ counts().pending }}</p></div>
+        <div class="og-cell"><p class="mono">Total encaissé</p><p class="disp">{{ money(counts().collected) }}</p></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="og-band sand after">
+  <div class="og-in">
+    <section class="card" aria-label="Avancement et réglages">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline">
+        <p class="mono">
+          Cotisation : {{ settings().contribution_amount === null ? '[montant à définir]' : money(settings().contribution_amount) }} par personne
+          @if (settings().contribution_deadline) { · avant le {{ formatShort(settings().contribution_deadline) }} }
+        </p>
+        <p class="mono">{{ percent() }} % ont versé</p>
+      </div>
+      <div class="og-bar" style="margin-top:14px" role="img" [attr.aria-label]="counts().paid + ' participants sur ' + counts().total + ' ont versé leur cotisation'"><i [style.width.%]="percent()"></i></div>
+
+      <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px 16px;align-items:end" aria-label="Réglages de la cotisation">
+        <p><label for="amt" class="og-label">Montant par personne (€)</label><input id="amt" class="field sm" style="margin-top:6px" type="number" min="0" step="0.01" formControlName="amount"></p>
+        <p><label for="dl" class="og-label">À régler avant le</label><input id="dl" class="field sm" style="margin-top:6px" type="date" formControlName="deadline"></p>
+        <button type="submit" class="btn sm" [disabled]="busy()">Enregistrer</button>
+      </form>
+    </section>
+
+    <div class="og-toolbar" style="margin-top:40px">
+      <div>
+        <button type="button" class="btn sm" [class.on]="filter() === 'all'" (click)="filter.set('all')">Tous</button>
+        <button type="button" class="btn sm" [class.on]="filter() === 'paid'" (click)="filter.set('paid')">Payés</button>
+        <button type="button" class="btn sm" [class.on]="filter() === 'partial'" (click)="filter.set('partial')">Partiels</button>
+        <button type="button" class="btn sm" [class.on]="filter() === 'pending'" (click)="filter.set('pending')">En attente</button>
+      </div>
+    </div>
+
+    <div class="og-table">
+      <table>
+        <thead>
+          <tr class="mono"><th scope="col">Participant</th><th scope="col">Statut</th><th scope="col">Versé</th><th scope="col">Date</th><th scope="col">Mode</th><th scope="col">Actions</th></tr>
+        </thead>
+        <tbody>
+          @for (r of shown(); track r.reg.id) {
+            @if (editing() === r.reg.id) {
+              <tr>
+                <td><span class="og-name">{{ r.reg.first_name }} {{ r.reg.last_name }}</span></td>
+                <td colspan="5">
+                  <form [formGroup]="editForm" (ngSubmit)="submitEdit(r.reg.id)" style="display:flex;flex-wrap:wrap;gap:12px;align-items:end">
+                    <p><label [for]="'a-' + r.reg.id" class="og-label">Versé (€)</label><input [id]="'a-' + r.reg.id" class="field sm" style="margin-top:6px;width:120px" type="number" min="0" step="0.01" formControlName="amount_paid"></p>
+                    <p><label [for]="'d-' + r.reg.id" class="og-label">Date</label><input [id]="'d-' + r.reg.id" class="field sm" style="margin-top:6px" type="date" formControlName="paid_at"></p>
+                    <p><label [for]="'m-' + r.reg.id" class="og-label">Mode</label>
+                      <select [id]="'m-' + r.reg.id" class="field sm" style="margin-top:6px" formControlName="method">
+                        <option [ngValue]="null">—</option>
+                        @for (m of methods; track m.value) { <option [value]="m.value">{{ m.label }}</option> }
+                      </select>
+                    </p>
+                    <button type="submit" class="btn pri sm" [disabled]="busy()">Enregistrer</button>
+                    <button type="button" class="btn sm" (click)="editing.set(null)">Annuler</button>
+                  </form>
+                </td>
+              </tr>
+            } @else {
+              <tr>
+                <td><span class="og-name">{{ r.reg.first_name }} {{ r.reg.last_name }}</span></td>
+                <td>
+                  @switch (r.status) {
+                    @case ('paid') { <span class="chip ok">✓ Payé</span> }
+                    @case ('partial') { <span class="chip">◐ Partiel</span> }
+                    @default { <span class="chip wait">… En attente</span> }
+                  }
+                </td>
+                <td>{{ money(r.paid) }}</td>
+                <td>{{ formatShort(r.paidAt) }}</td>
+                <td>{{ r.method ?? '—' }}</td>
+                <td>
+                  <div class="og-actions">
+                    @if (r.status !== 'paid') {
+                      <button type="button" class="btn pri sm" [disabled]="busy()" (click)="markPaid(r.reg.id)">Marquer payé</button>
+                    }
+                    <button type="button" class="btn sm" [disabled]="busy()" (click)="startEdit(r)">Modifier</button>
+                  </div>
+                </td>
+              </tr>
+            }
+          } @empty {
+            <tr><td colspan="6" class="og-empty">Aucun participant validé pour ce filtre.</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </main>
+}
