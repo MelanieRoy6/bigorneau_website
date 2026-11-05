@@ -6,6 +6,7 @@
     </a>
     <nav class="og-nav" aria-label="Espace orga">
       <a routerLink="/orga" routerLinkActive="on" [routerLinkActiveOptions]="{ exact: true }">Planning</a>
+      <a routerLink="/orga/infos" routerLinkActive="on">Infos</a>
       @if (auth.isAdmin()) {
         <a routerLink="/orga/inscrits" routerLinkActive="on">Inscrits</a>
         <a routerLink="/orga/tirage" routerLinkActive="on">Tirage</a>

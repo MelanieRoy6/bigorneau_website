@@ -30,6 +30,17 @@ export class OrgaData {
     if (error) throw error;
   }
 
+  async getRegistration(id: string): Promise<Registration> {
+    const res = await supabase.from('registrations').select('*').eq('id', id).single();
+    if (res.error) throw res.error;
+    return res.data as Registration;
+  }
+
+  async updateMyPrefs(id: string, prefs: { sleeping_pref: string | null; bring_alcohol: string | null }): Promise<void> {
+    const { error } = await supabase.from('registrations').update(prefs).eq('id', id);
+    if (error) throw error;
+  }
+
   async addRegistration(payload: { first_name: string; last_name: string; email: string; phone: string | null; note: string | null }): Promise<Registration> {
     const res = await supabase.from('registrations').insert({ ...payload, status: 'pending' }).select().single();
     if (res.error) throw res.error;

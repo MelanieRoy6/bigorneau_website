@@ -1,5 +1,6 @@
 export type RegistrationStatus = 'pending' | 'validated' | 'refused';
-export type Role = 'admin' | 'member';
+export type Role = 'admin' | 'member' | 'user';
+export type SleepingPref = 'camion' | 'tente' | 'maison';
 export type PayMethod = 'virement' | 'especes' | 'cheque' | 'autre';
 
 export interface Registration {
@@ -11,6 +12,8 @@ export interface Registration {
   diet: string | null;
   note: string | null;
   status: RegistrationStatus;
+  sleeping_pref: SleepingPref | null;
+  bring_alcohol: string | null;
   created_at: string;
 }
 

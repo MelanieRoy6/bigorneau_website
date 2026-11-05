@@ -1,11 +1,13 @@
 <header class="og-hero">
-  <div class="og-in">
-    <p class="mono og-eyebrow">Week-end du 4 au 6 juin 2027</p>
-    <h1 class="disp og-h1">Qui fait <span class="acc">quoi</span>, quand</h1>
-    @if (!loading() && !error() && settings() && !settings()!.planning_published && auth.isAdmin()) {
-      <p class="og-msg">Aperçu administrateur : le planning n'est pas encore publié, les participants ne le voient pas.</p>
-    }
-    @if (error()) { <p class="og-msg err" role="alert">{{ error() }}</p> }
+  <div class="og-in" style="display:flex;align-items:center;gap:clamp(20px,4vw,56px);flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <h1 class="disp og-h1">Qui fait <span class="acc">quoi</span>, quand</h1>
+      @if (!loading() && !error() && settings() && !settings()!.planning_published && auth.isAdmin()) {
+        <p class="og-msg">Aperçu administrateur : le planning n'est pas encore publié, les participants ne le voient pas.</p>
+      }
+      @if (error()) { <p class="og-msg err" role="alert">{{ error() }}</p> }
+    </div>
+    <img src="bigo_plannif.png" alt="" aria-hidden="true" style="flex-shrink:0;width:clamp(120px,18vw,220px);height:auto">
   </div>
 </header>
 

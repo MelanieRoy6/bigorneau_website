@@ -23,6 +23,7 @@ export const routes: Routes = [
     loadComponent: () => import('./orga/shell/shell').then((m) => m.OrgaShell),
     children: [
       { path: '', pathMatch: 'full', loadComponent: () => import('./orga/planning/planning').then((m) => m.Planning) },
+      { path: 'infos', loadComponent: () => import('./orga/infos/infos').then((m) => m.Infos) },
       { path: 'inscrits', canActivate: [adminGuard], loadComponent: () => import('./orga/inscrits/inscrits').then((m) => m.Inscrits) },
       { path: 'tirage', canActivate: [adminGuard], loadComponent: () => import('./orga/tirage/tirage').then((m) => m.Tirage) },
       { path: 'cotisations', canActivate: [adminGuard], loadComponent: () => import('./orga/cotisations/cotisations').then((m) => m.Cotisations) },
