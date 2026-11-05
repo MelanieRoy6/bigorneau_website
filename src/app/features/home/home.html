@@ -1,0 +1,393 @@
+<div class="bp" id="top">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="mascot" viewBox="-70 -70 156 118">
+      <path d="M-54,40 C-62,22 -34,14 -4,14 C22,14 34,-6 52,-8 C70,-8 76,14 66,28 C62,36 56,40 50,40 Z" fill="#4a6b3a"/>
+      <path d="M-48,26 C-58,-8 -32,-46 -2,-62 C26,-46 46,-10 38,26 Z" fill="#9a6a22"/>
+      <path d="M-44,14 Q-4,30 40,10 M-40,-2 Q-4,12 36,-6 M-30,-22 Q-2,-8 28,-24 M-14,-42 Q0,-34 14,-44" fill="none" stroke="#5e3d0f" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="52" cy="-1" r="7" fill="#f08a1c"/><circle cx="54" cy="-1" r="3.2" fill="#2b1d5e"/>
+      <circle cx="66" cy="6" r="6" fill="#f08a1c"/><circle cx="68" cy="6" r="2.8" fill="#2b1d5e"/>
+      <path d="M60,22 Q67,27 73,20" fill="none" stroke="#2b1d5e" stroke-width="2.6" stroke-linecap="round"/>
+      <g transform="rotate(-8 -16 30)">
+        <rect x="-32" y="22" width="30" height="20" rx="3" fill="#fff4ea" stroke="#2b1d5e" stroke-width="1.5"/>
+        <text x="-17" y="37.5" text-anchor="middle" font-family="DM Mono, monospace" font-weight="500" font-size="13" fill="#2b1d5e">51</text>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="scene">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="seaG" gradientUnits="userSpaceOnUse" x1="0" y1="470" x2="0" y2="900">
+          <stop offset="0" stop-color="#46c4c6"/><stop offset="1" stop-color="#12707c"/>
+        </linearGradient>
+        <mask id="dryMask" maskUnits="userSpaceOnUse" x="-200" y="470" width="1900" height="480">
+          <rect class="tide-rect" x="-200" y="470" width="1900" height="480" fill="#fff"/>
+        </mask>
+        <g id="sn">
+          <path d="M-15,10 C-22,-8 -9,-24 2,-30 C16,-20 22,-4 15,10 Z" fill="#3a2a6e"/>
+          <path d="M-12,2 Q2,9 14,0 M-10,-9 Q2,-2 11,-11 M-5,-19 Q3,-14 8,-21" fill="none" stroke="#a99bd1" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="3" cy="10" rx="18" ry="4" fill="#f2d9bd"/>
+        </g>
+      </defs>
+
+      <!-- ciel en bandes -->
+      <rect x="-3000" y="-3000" width="7440" height="3100" fill="#a99bd1"/>
+      <rect x="-3000" y="100" width="7440" height="90" fill="#b8a6d3"/>
+      <rect x="-3000" y="190" width="7440" height="80" fill="#c9aed2"/>
+      <rect x="-3000" y="270" width="7440" height="75" fill="#dcb9cd"/>
+      <rect x="-3000" y="345" width="7440" height="70" fill="#eec1c4"/>
+      <rect x="-3000" y="415" width="7440" height="70" fill="#f9cdbf"/>
+
+      <!-- soleil -->
+      <g transform="translate(960 380)">
+        <g class="sun">
+          <circle r="124" fill="#ffd27a" opacity=".16"/>
+          <circle r="94" fill="#ffd27a" opacity=".26"/>
+          <circle r="64" fill="#ffd27a"/>
+        </g>
+      </g>
+
+      <!-- nuages -->
+      <g transform="translate(150 118) scale(1.25)"><g class="cloud"><path d="M0,30 Q-6,12 16,12 Q22,-8 46,2 Q64,-10 80,10 Q104,8 100,30 Z" fill="#fff4ea"/></g></g>
+      <g transform="translate(1040 96) scale(1.5)"><g class="cloud" style="animation-duration:32s"><path d="M0,30 Q-6,12 16,12 Q22,-8 46,2 Q64,-10 80,10 Q104,8 100,30 Z" fill="#fff4ea"/></g></g>
+      <g transform="translate(1250 250) scale(.8)"><g class="cloud" style="animation-duration:22s"><path d="M0,30 Q-6,12 16,12 Q22,-8 46,2 Q64,-10 80,10 Q104,8 100,30 Z" fill="#fff4ea"/></g></g>
+
+      <!-- mouettes -->
+      <g transform="translate(760 150)"><g class="gull"><g class="flap"><path d="M0,0 Q9,-9 18,0 Q27,-9 36,0" fill="none" stroke="#2b1d5e" stroke-width="3" stroke-linecap="round"/></g></g></g>
+      <g transform="translate(830 178) scale(.8)"><g class="gull" style="animation-duration:19s"><g class="flap" style="animation-duration:1.7s"><path d="M0,0 Q9,-9 18,0 Q27,-9 36,0" fill="none" stroke="#2b1d5e" stroke-width="3" stroke-linecap="round"/></g></g></g>
+      <g transform="translate(1180 320) scale(.7)"><g class="gull" style="animation-duration:21s"><g class="flap" style="animation-duration:1.5s"><path d="M0,0 Q9,-9 18,0 Q27,-9 36,0" fill="none" stroke="#2b1d5e" stroke-width="3" stroke-linecap="round"/></g></g></g>
+
+      <!-- collines lavande -->
+      <path d="M-300,480 L-300,420 Q-40,350 120,410 Q250,370 380,438 Q430,448 470,480 Z" fill="#a99bd1"/>
+      <path d="M-300,480 L-300,440 Q-10,390 90,436 Q210,408 320,462 Q350,470 380,480 Z" fill="#8f81c3"/>
+      <path d="M1000,480 Q1100,402 1200,432 Q1320,372 1740,420 L1740,480 Z" fill="#a99bd1"/>
+      <path d="M1130,480 Q1240,426 1330,452 Q1400,420 1740,448 L1740,480 Z" fill="#8f81c3"/>
+
+      <!-- mer -->
+      <rect x="-3000" y="470" width="7440" height="3000" fill="url(#seaG)"/>
+
+      <!-- reflets soleil -->
+      <g fill="#ffe9b0">
+        <rect class="ref" x="905" y="492" width="110" height="5" rx="2.5"/>
+        <rect class="ref" x="920" y="512" width="80" height="5" rx="2.5" style="--dl:-1s"/>
+        <rect class="ref" x="885" y="534" width="150" height="5" rx="2.5" style="--dl:-2s"/>
+        <rect class="ref" x="925" y="558" width="72" height="5" rx="2.5" style="--dl:-3s"/>
+        <rect class="ref" x="1020" y="584" width="150" height="5" rx="2.5" style="--dl:-1.5s"/>
+        <rect class="ref" x="1000" y="640" width="190" height="5" rx="2.5" style="--dl:-2.5s"/>
+      </g>
+      <g fill="#8fe1e0" opacity=".7">
+        <rect class="ref" x="120" y="520" width="90" height="4" rx="2" style="--dl:-.5s"/>
+        <rect class="ref" x="300" y="560" width="120" height="4" rx="2" style="--dl:-2s"/>
+        <rect class="ref" x="560" y="518" width="80" height="4" rx="2" style="--dl:-3s"/>
+        <rect class="ref" x="1210" y="540" width="100" height="4" rx="2" style="--dl:-1s"/>
+        <rect class="ref" x="1290" y="610" width="130" height="4" rx="2" style="--dl:-4s"/>
+        <rect class="ref" x="40" y="650" width="110" height="4" rx="2" style="--dl:-2.5s"/>
+        <rect class="ref" x="1150" y="720" width="120" height="4" rx="2" style="--dl:-3.5s"/>
+        <rect class="ref" x="70" y="800" width="150" height="4" rx="2" style="--dl:-1.5s"/>
+      </g>
+
+      <!-- route du Gois -->
+      <path d="M130,900 Q588,790 537,742.5 Q486,695 660,660 Q834,625 803,598.5 Q772,572 885,551 L998,530 L1022,530 L925,551 Q828,572 877,598.5 Q926,625 780,660 Q634,695 723,742.5 Q812,790 470,900 Z" fill="#3a2a6e" opacity=".32"/>
+      <g mask="url(#dryMask)">
+        <path d="M130,900 Q588,790 537,742.5 Q486,695 660,660 Q834,625 803,598.5 Q772,572 885,551 L998,530 L1022,530 L925,551 Q828,572 877,598.5 Q926,625 780,660 Q634,695 723,742.5 Q812,790 470,900 Z" fill="#3a2a6e" stroke="#7a6bb5" stroke-width="3" stroke-linejoin="round"/>
+      </g>
+
+      <!-- balise du Gois -->
+      <g transform="translate(1072 545)">
+        <path d="M-92,6 Q-40,22 20,12 Q70,4 96,10 Q60,26 0,26 Q-60,26 -92,6 Z" fill="#3a2a6e" opacity=".55"/>
+        <path d="M-72,2 L-34,-46 L34,-46 L72,2 Z" fill="#e0503f"/>
+        <path d="M-34,-46 L34,-46 L40,-38 L-40,-38 Z" fill="#f26a52"/>
+        <path d="M28,-48 L28,-66 L74,-10" fill="none" stroke="#2b1d5e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M-4,-96 L-44,-136 M4,-96 L44,-136" stroke="#e0503f" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <rect x="-5" y="-170" width="10" height="126" fill="#f2a844"/>
+        <path d="M-52,-134 L52,-134 L40,-120 L-40,-120 Z" fill="#f2a844"/>
+        <path d="M-40,-120 L40,-120 L34,-114 L-34,-114 Z" fill="#3a2a6e"/>
+        <path d="M-46,-134 L-46,-160 L46,-160 L46,-134 M-46,-134 L46,-160 M46,-134 L-46,-160" fill="none" stroke="#f2a844" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="-3" y="-182" width="6" height="14" fill="#f2a844"/>
+        <circle cx="0" cy="-186" r="4" fill="#e0503f"/>
+      </g>
+      <g fill="#2b1d5e">
+        <rect x="1022" y="518" width="3" height="22"/><rect x="1008" y="528" width="3" height="20"/><rect x="994" y="540" width="3" height="22"/>
+      </g>
+
+      <!-- bulles -->
+      <g fill="none" stroke="#fff" stroke-width="2">
+        <circle class="bub" cx="300" cy="720" r="7" style="--dl:0s"/>
+        <circle class="bub" cx="620" cy="860" r="9" style="--dl:-3s"/>
+        <circle class="bub" cx="1180" cy="640" r="6" style="--dl:-5s"/>
+        <circle class="bub" cx="1270" cy="790" r="8" style="--dl:-2s"/>
+        <circle class="bub" cx="130" cy="640" r="5" style="--dl:-6s"/>
+        <circle class="bub" cx="1330" cy="560" r="5" style="--dl:-4s"/>
+      </g>
+
+      <!-- tracé de vol -->
+      <path class="trail" d="M -120 240 Q 400 40 760 200 T 1560 190" pathLength="1"/>
+
+      <!-- Canadair -->
+      <g class="plane">
+        <g transform="scale(1.15)">
+          <path d="M-66,-6 L-82,-36 L-64,-36 L-46,-8 Z" fill="#e0503f"/>
+          <rect x="-86" y="-40" width="26" height="5" rx="2" fill="#2b1d5e"/>
+          <path d="M-74,-2 Q-70,-16 -42,-17 L38,-17 Q64,-15 80,2 Q70,15 40,15 L-42,15 Q-66,13 -74,-2 Z" fill="#fff4ea"/>
+          <path d="M-70,3 L76,3 Q68,15 40,15 L-42,15 Q-62,13 -70,3 Z" fill="#e0503f"/>
+          <path d="M52,-14 Q70,-12 76,-2 L54,-2 Z" fill="#2b1d5e"/>
+          <circle cx="-34" cy="-5" r="2.5" fill="#2b1d5e"/><circle cx="-22" cy="-5" r="2.5" fill="#2b1d5e"/><circle cx="-10" cy="-5" r="2.5" fill="#2b1d5e"/>
+          <path d="M-32,-24 L40,-24 L32,-17 L-40,-17 Z" fill="#f2a844"/>
+          <rect x="-6" y="-33" width="30" height="9" rx="4" fill="#e0503f"/>
+          <ellipse cx="25" cy="-28.5" rx="2.5" ry="11" fill="#2b1d5e" opacity=".35"/>
+          <rect x="-30" y="-14" width="10" height="4" rx="2" fill="#2b1d5e"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="tide" aria-hidden="true">
+    <div class="tide-row"><span class="mono">Marée basse</span><span class="tide-num"></span></div>
+    <div class="tide-bar"><i></i></div>
+  </div>
+
+  <div class="hero-in">
+    <p class="mono eyebrow">Cinquième édition · 5 &amp; 6 juin 2027</p>
+    <h1 class="disp ttl"><span class="w w1">Bigorneaux</span> <span class="w w2">Party</span></h1>
+    <p class="sub">Olympiades en binôme, muscadet à gogo, mythiques épreuves au rdv avec fou rire garanti, au célèbre passage du Gois.</p>
+  </div>
+</header>
+
+<!-- ===================== TICKET INFOS ===================== -->
+<div class="ticket-wrap">
+  <div class="ticket-shadow">
+    <div class="ticket">
+      <div class="t-cell">
+        <span class="mono t-label">Quand</span>
+        <span class="disp t-val">Week-end du 5 et 6 juin 2027</span>
+      </div>
+      <div class="t-cell">
+        <span class="mono t-label">Où</span>
+        <span class="disp t-val">Beauvoir-sur-Mer</span>
+
+      </div>
+      <div class="t-cell t-cta">
+        <a class="btn" href="#rejoindre">Rejoindre l'aventure
+          <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="after-ticket"></div>
+
+<!-- ===================== LES OLYMPIADES ===================== -->
+<section class="sec olymp" id="olympiades" aria-labelledby="t-olymp">
+  <div class="wrap">
+    <p class="mono kick reveal">Règlement officiel</p>
+    <h2 class="disp h2 reveal" id="t-olymp" style="--i:1">Les olympiades</h2>
+
+    <div class="rules">
+      <div class="rule reveal" style="--i:2">
+        <span class="mono kick" style="margin:0">Article 1</span>
+        <p>Toutes les épreuves se jouent en binôme. Les binômes sont tirés au sort en début de week-end.</p>
+      </div>
+      <div class="rule reveal" style="--i:3">
+        <span class="mono kick" style="margin:0">Article 2</span>
+        <p>Les épreuves sont imaginées chaque année par les vainqueurs de l'édition précédente, qui remettent leur trophée en jeu.</p>
+      </div>
+    </div>
+
+    <!-- Épreuve 01 -->
+    <article class="ep1 reveal">
+      <div class="ep1-txt">
+        <span class="mono ep-n">Épreuve 01</span>
+        <h3 class="disp ep1-t">Le crachat de bigorneau</h3>
+        <p class="ep-p">Un bigorneau, une bouche, un mètre ruban. Le reste est une affaire de souffle.</p>
+      </div>
+      <div class="ep1-demo">
+        <svg class="spit" viewBox="0 0 600 300" role="img" aria-label="Démonstration animée : le bigorneau crache sa coquille, qui retombe au loin ; un mètre ruban se déroule jusqu'à un drapeau « Record : à renseigner ».">
+          <defs>
+            <pattern id="ticks" width="20" height="16" patternUnits="userSpaceOnUse">
+              <rect width="20" height="16" fill="#ffd27a"/>
+              <rect x="0" y="0" width="1.6" height="9" fill="#2b1d5e"/>
+              <rect x="10" y="0" width="1.1" height="5" fill="#2b1d5e"/>
+            </pattern>
+            <clipPath id="tapeclip"><rect class="tape-clip" x="90" y="252" width="470" height="30"/></clipPath>
+          </defs>
+          <path d="M0,240 L0,208 Q60,176 130,206 Q210,168 300,214 Q380,186 470,214 Q540,192 600,210 L600,240 Z" fill="#cdbfe3"/>
+          <circle cx="470" cy="90" r="34" fill="#ffd27a"/>
+          <rect x="0" y="240" width="600" height="60" fill="#e6cf9f"/>
+          <g clip-path="url(#tapeclip)">
+            <rect x="96" y="258" width="444" height="16" fill="url(#ticks)" stroke="#2b1d5e" stroke-width="1.5"/>
+          </g>
+          <circle cx="96" cy="266" r="10" fill="#2b1d5e"/><circle cx="96" cy="266" r="4" fill="#ffd27a"/>
+          <ellipse class="ring" cx="540" cy="238" rx="54" ry="12" fill="none" stroke="#2b1d5e" stroke-width="3"/>
+          <line class="pole" x1="560" y1="240" x2="560" y2="116" stroke="#2b1d5e" stroke-width="4" stroke-linecap="round"/>
+          <g class="flag">
+            <path class="flag-bg" d="M560,120 H372 L392,152 L372,184 H560 Z"/>
+            <text class="flag-t" x="474" y="146" text-anchor="middle">Record :</text>
+            <text class="flag-t" x="474" y="170" text-anchor="middle">[à renseigner]</text>
+          </g>
+          <g class="masc">
+            <use href="#mascot" x="14" y="128" width="156" height="118"/>
+            <ellipse class="mouth" cx="152" cy="221" rx="7" ry="8" fill="#2b1d5e"/>
+          </g>
+          <circle class="dr dr1" r="4.5" fill="#46c4c6"/>
+          <circle class="dr dr2" r="3.5" fill="#46c4c6"/>
+          <circle class="dr dr3" r="3" fill="#12707c"/>
+          <circle class="dr dr4" r="4" fill="#46c4c6"/>
+          <g class="shell">
+            <g transform="scale(1.9)">
+              <path d="M-7,5 C-10,-3 -4,-10 1,-13 C7,-9 10,-2 7,5 Z" fill="#3a2a6e"/>
+              <path d="M-5,0 Q1,3 6,-1" fill="none" stroke="#a99bd1" stroke-width="1.5" stroke-linecap="round"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </article>
+
+    <!-- Épreuves 02 à 04 -->
+    <div class="eps">
+      <article class="ep reveal" style="--i:1">
+        <div class="ep-art">
+          <svg viewBox="0 0 240 140" aria-hidden="true" focusable="false">
+            <path class="suit" d="M10,140 Q10,104 44,102 Q78,104 78,140 Z"/>
+            <path d="M162,140 Q162,104 196,102 Q230,104 230,140 Z" fill="#12707c"/>
+            <circle cx="44" cy="72" r="24" fill="#f2d9bd"/><circle cx="196" cy="72" r="24" fill="#f2d9bd"/>
+            <circle cx="54" cy="66" r="2.6" fill="#2b1d5e"/><circle cx="64" cy="66" r="2.6" fill="#2b1d5e"/>
+            <circle cx="186" cy="66" r="2.6" fill="#2b1d5e"/><circle cx="176" cy="66" r="2.6" fill="#2b1d5e"/>
+            <path d="M62,82 L100,82" stroke="#cfd6dc" stroke-width="5" stroke-linecap="round"/>
+            <path d="M178,82 L140,82" stroke="#cfd6dc" stroke-width="5" stroke-linecap="round"/>
+            <ellipse cx="108" cy="80" rx="12" ry="6.5" fill="#cfd6dc"/>
+            <ellipse cx="132" cy="80" rx="12" ry="6.5" fill="#cfd6dc"/>
+            <g class="hop"><g transform="scale(.55)"><use href="#sn"/></g></g>
+          </svg>
+        </div>
+        <div class="ep-body">
+          <span class="mono ep-n">Épreuve 02</span>
+          <h3 class="disp ep-t">Le passage de relais de bigorneaux</h3>
+          <p class="ep-p">Une cuillère serrée entre les dents, à transmettre au coéquipier sans lâcher le bigorneau.</p>
+        </div>
+      </article>
+
+      <article class="ep reveal" style="--i:2">
+        <div class="ep-art">
+          <svg viewBox="0 0 240 140" aria-hidden="true" focusable="false">
+            <rect x="0" y="124" width="240" height="16" fill="#e6cf9f"/>
+            <g stroke="#2b1d5e" stroke-width="3" stroke-linecap="round">
+              <path class="speed" d="M40,60 L64,60" style="--dl:0s"/>
+              <path class="speed" d="M30,78 L58,78" style="--dl:-.4s"/>
+              <path class="speed" d="M44,96 L66,96" style="--dl:-.8s"/>
+            </g>
+            <path d="M92,46 Q120,6 148,46" fill="none" stroke="#2b1d5e" stroke-width="4" stroke-linecap="round"/>
+            <path d="M86,50 L154,50 L146,112 L94,112 Z" fill="#12707c"/>
+            <rect x="82" y="44" width="76" height="8" rx="3" fill="#46c4c6"/>
+            <circle cx="104" cy="84" r="3.6" fill="#10222f"/><circle cx="121" cy="97" r="3.6" fill="#10222f"/><circle cx="137" cy="80" r="3.6" fill="#10222f"/>
+            <ellipse class="leak" cx="104" cy="90" rx="2.6" ry="4" fill="#46c4c6" style="--dl:0s"/>
+            <ellipse class="leak" cx="121" cy="103" rx="2.6" ry="4" fill="#46c4c6" style="--dl:-.5s"/>
+            <ellipse class="leak" cx="137" cy="86" rx="2.6" ry="4" fill="#46c4c6" style="--dl:-1s"/>
+          </svg>
+        </div>
+        <div class="ep-body">
+          <span class="mono ep-n">Épreuve 03</span>
+          <h3 class="disp ep-t">« Save Nono le bigorneau »</h3>
+          <p class="ep-p">Course de rapidité en temps limité : il faut remplir un maximum d'eau en courant avec un petit seau percé.</p>
+        </div>
+      </article>
+
+      <article class="ep ep-later reveal" style="--i:3">
+        <div class="ep-art">
+          <svg viewBox="0 0 240 140" aria-hidden="true" focusable="false">
+            <rect x="14" y="14" width="212" height="112" rx="14" fill="none" stroke="#2b1d5e" stroke-width="2.5" stroke-dasharray="7 7"/>
+            <circle class="pulse" cx="96" cy="70" r="8" fill="#2b1d5e" style="--dl:0s"/>
+            <circle class="pulse" cx="120" cy="70" r="8" fill="#2b1d5e" style="--dl:-.5s"/>
+            <circle class="pulse" cx="144" cy="70" r="8" fill="#2b1d5e" style="--dl:-1s"/>
+          </svg>
+        </div>
+        <div class="ep-body">
+          <span class="mono ep-n">Épreuve 04</span>
+          <h3 class="disp ep-t">Et bien d'autres encore</h3>
+          <p class="ep-p">[programme complet à annoncer]</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LE RESTE DU WEEK-END ===================== -->
+<section class="sec weekend" id="weekend" aria-labelledby="t-we">
+  <div class="wrap">
+    <p class="mono kick reveal" style="color:var(--ink)">Entre deux épreuves</p>
+    <h2 class="disp h2 reveal" id="t-we" style="--i:1">Le reste du week-end</h2>
+    <svg class="wave reveal" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true" focusable="false" style="--i:2">
+      <path d="M0,28 C100,-6 200,62 300,28 S500,-6 600,28 S800,62 900,28 S1100,-6 1200,28" fill="none" stroke="#10222f" stroke-width="3" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <div class="rows">
+      <div class="row reveal">
+        <span class="mono row-l">Côté scène</span>
+        <div><h3 class="row-t">Un concert de rock dans la grange</h3><p class="row-d">Le soir, quand les olympiques ont rendu leur verdict.</p></div>
+      </div>
+      <div class="row reveal" style="--i:1">
+        <span class="mono row-l">Côté pelouse</span>
+        <div><h3 class="row-t">La célèbre partie de rugby improvisé</h3><p class="row-d">Un maximum de plaisir, un minimum de blessés.</p></div>
+      </div>
+      <div class="row reveal" style="--i:2">
+        <span class="mono row-l">Côté verre</span>
+        <div><h3 class="row-t">Le muscadet</h3><p class="row-d">La boisson du week-end.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÉDITIONS PRÉCÉDENTES ===================== -->
+<section class="sec" id="editions" aria-labelledby="t-ed">
+  <div class="wrap">
+    <p class="mono kick reveal" style="color:var(--accent-deep)">Dans les archives</p>
+    <h2 class="disp h2 reveal" id="t-ed" style="--i:1">Éditions précédentes</h2>
+    <div class="posters">
+      <figure class="poster reveal" style="margin:0">
+        <div class="poster-in">
+          <img src="affiche-edition-3.jpg" alt="Affiche de la 3ème édition de la Bigorneaux Party">
+        </div>
+        <figcaption class="poster-cap"><h3 class="disp">Édition 3</h3></figcaption>
+      </figure>
+      <figure class="poster reveal" style="--i:2;margin:0">
+        <div class="poster-in">
+          <img src="affiche-edition-4.jpg" alt="Affiche de la 4ème édition de la Bigorneaux Party">
+        </div>
+        <figcaption class="poster-cap"><h3 class="disp">Édition 4</h3></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REJOINDRE ===================== -->
+<section class="sec join" id="rejoindre" aria-labelledby="t-join">
+  <div class="wrap join-in">
+    <div class="join-txt">
+      <h2 class="disp join-h reveal" id="t-join">Tu viens cracher avec nous ?</h2>
+      <p class="join-p reveal" style="--i:1">Viens avec ton dossard et ton meilleur crachat. Ton binôme sera tiré au sort en début de week-end.</p>
+      <div class="reveal" style="--i:2">
+        <a class="btn btn-dark" href="#rejoindre">Je m'inscris
+          <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="mono join-note" style="margin-top:18px">Inscription : [lien ou formulaire à définir] · Participation : [à définir]</p>
+      </div>
+    </div>
+    <img class="join-masc reveal" src="big.png" alt="La mascotte bigorneau" style="--i:2">
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="foot-in">
+    <a class="top-link" href="#top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+      Retour en haut
+    </a>
+    <p class="legal">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+  </div>
+</footer>
+
+</div>
