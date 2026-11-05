@@ -7,8 +7,8 @@
  *   Ne mets JAMAIS ici la clé « service_role ».
  */
 export const SUPABASE_CONFIG = {
-  url: 'https://VOTRE-PROJET.supabase.co',
-  anonKey: 'VOTRE_CLE_ANON_PUBLIQUE',
+  url: 'https://aimnzpbdndluxvvbxzma.supabase.co',
+  anonKey: 'sb_publishable_Y2sh2-EA3wc87KknvApgmg_8um1jptS',
 };
 
 export const isSupabaseConfigured =
