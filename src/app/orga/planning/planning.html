@@ -1,0 +1,75 @@
+<header class="og-hero">
+  <div class="og-in" style="display:flex;align-items:center;gap:clamp(20px,4vw,56px);flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <h1 class="disp og-h1">Qui fait <span class="acc">quoi</span>, quand</h1>
+      @if (!loading() && !error() && settings() && !settings()!.planning_published && auth.isAdmin()) {
+        <p class="og-msg">Aperçu administrateur : le planning n'est pas encore publié, les participants ne le voient pas.</p>
+      }
+      @if (error()) { <p class="og-msg err" role="alert">{{ error() }}</p> }
+    </div>
+    <img src="bigo_plannif.png" alt="" aria-hidden="true" style="flex-shrink:0;width:clamp(120px,18vw,220px);height:auto">
+  </div>
+</header>
+
+@if (loading()) {
+  <main class="og-band sand after"><div class="og-in"><p class="og-lead" role="status">Chargement du planning…</p></div></main>
+} @else if (!error() && !visible()) {
+  <main class="og-band sand after">
+    <div class="og-in">
+      <section class="card">
+        <p class="disp" style="font-size:2.4rem">Le planning arrive bientôt</p>
+        <p class="og-lead">Les repas sont tirés au sort par l'organisation. Dès que le planning est publié, tu retrouves ici ce que tu prépares et avec qui.</p>
+      </section>
+    </div>
+  </main>
+} @else if (!error()) {
+  @if (!auth.isAdmin() || auth.profile()?.registration_id) {
+    <section class="og-band accent after" aria-label="Tes repas">
+      <div class="og-in" style="display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between">
+        <div style="flex:1 1 420px">
+          <p class="mono">Tes repas à préparer</p>
+          @if (mine().length) {
+            <p class="disp og-h2" style="margin-top:12px">{{ mineLabel() }}</p>
+          } @else {
+            <p class="disp og-h2" style="margin-top:12px">Aucun repas pour toi</p>
+          }
+        </div>
+        <p style="max-width:26rem;font-weight:600;font-size:1.2rem;line-height:1.45">
+          @if (mine().length) {
+            Tu es aux fourneaux {{ mine().length }} fois ce week-end. Le reste du temps, tu mets les pieds sous la table.
+          } @else {
+            Rapproche-toi de l'organisation si tu penses qu'il y a une erreur.
+          }
+        </p>
+      </div>
+    </section>
+  }
+
+  <main class="og-band sand" [class.after]="auth.isAdmin() && !auth.profile()?.registration_id">
+    <div class="og-in">
+      @if (days().length === 0) {
+        <p class="og-lead" style="margin-top:0">Aucun repas n'est encore prévu.</p>
+      }
+      <div class="og-grid" style="margin-top:0">
+        @for (day of days(); track day.iso) {
+          <section [attr.aria-labelledby]="'d-' + day.iso">
+            <h2 [id]="'d-' + day.iso" class="og-day">{{ day.label }}</h2>
+            @for (item of day.meals; track item.meal.id) {
+              <article class="card og-meal" [class.me]="item.mine">
+                <p class="mono">{{ item.meal.time_label }}</p>
+                <h3 class="disp">{{ item.meal.label }}</h3>
+                <div class="chips">
+                  @for (c of item.cooks; track c.registration_id) {
+                    <span class="chip" [class.you]="c.is_me">{{ c.display_name }}@if (c.is_me) { (toi) }</span>
+                  } @empty {
+                    <span class="chip wait">Pas encore tiré</span>
+                  }
+                </div>
+              </article>
+            }
+          </section>
+        }
+      </div>
+    </div>
+  </main>
+}

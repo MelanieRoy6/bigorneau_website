@@ -1,0 +1,131 @@
+<header class="og-hero">
+  <div class="og-in">
+    <p class="mono og-eyebrow">Administration</p>
+    <h1 class="disp og-h1">Les <span class="acc">inscrits</span></h1>
+  </div>
+</header>
+
+<div class="og-ticket-wrap">
+  <div class="og-ticket-shadow">
+    <div class="og-ticket">
+      <div class="og-cell"><p class="mono">Inscriptions reçues</p><p class="disp">{{ stats().total }}</p></div>
+      <div class="og-cell"><p class="mono">À valider</p><p class="disp hot">{{ stats().pending }}</p></div>
+      <div class="og-cell"><p class="mono">Validés</p><p class="disp">{{ stats().validated }}</p></div>
+      <div class="og-cell"><p class="mono">Comptes créés</p><p class="disp">{{ stats().accounts }}</p></div>
+    </div>
+  </div>
+</div>
+
+<main class="og-band sand after">
+<div class="og-in">
+  <div class="og-toolbar">
+    <div>
+      <label class="mono" for="q">Rechercher</label>
+      <input id="q" class="field sm" style="min-width:260px" type="search" placeholder="Nom, e-mail…" [value]="query()" (input)="onQuery($event)">
+    </div>
+    <div>
+      <button type="button" class="btn sm" [class.on]="filter() === 'all'" (click)="filter.set('all')">Tous</button>
+      <button type="button" class="btn sm" [class.on]="filter() === 'pending'" (click)="filter.set('pending')">À valider</button>
+      <button type="button" class="btn sm" [class.on]="filter() === 'validated'" (click)="filter.set('validated')">Validés</button>
+      <button type="button" class="btn pri sm" (click)="exportCsv()">Exporter en CSV</button>
+      <button type="button" class="btn sm" style="background:var(--ink);color:var(--paper);box-shadow:0 3px 0 rgba(16,34,47,.4)" (click)="toggleAdd()">{{ showAdd() ? '✕ Annuler' : '+ Ajouter un participant' }}</button>
+    </div>
+  </div>
+
+  @if (showAdd()) {
+    <form class="card pop" style="margin-top:20px;padding:clamp(20px,3vw,36px)" [formGroup]="addForm" (ngSubmit)="submitAdd()" novalidate aria-label="Ajouter un participant manuellement">
+      <p class="mono" style="margin-bottom:16px;font-weight:600">Ajouter un participant</p>
+      <div class="og-grid2">
+        <p>
+          <label for="add-fn" class="og-label">Prénom</label>
+          <input id="add-fn" class="field" formControlName="first_name" autocomplete="off"
+            [attr.aria-invalid]="addForm.controls.first_name.touched && addForm.controls.first_name.invalid">
+        </p>
+        <p>
+          <label for="add-ln" class="og-label">Nom</label>
+          <input id="add-ln" class="field" formControlName="last_name" autocomplete="off"
+            [attr.aria-invalid]="addForm.controls.last_name.touched && addForm.controls.last_name.invalid">
+        </p>
+        <p>
+          <label for="add-em" class="og-label">Adresse e-mail</label>
+          <input id="add-em" class="field" type="email" formControlName="email" autocomplete="off"
+            [attr.aria-invalid]="addForm.controls.email.touched && addForm.controls.email.invalid">
+        </p>
+        <p>
+          <label for="add-ph" class="og-label">Téléphone <span class="og-opt">(facultatif)</span></label>
+          <input id="add-ph" class="field" type="tel" formControlName="phone" autocomplete="off">
+        </p>
+      </div>
+      <p style="margin-top:16px">
+        <label for="add-no" class="og-label">Note <span class="og-opt">(facultatif)</span></label>
+        <textarea id="add-no" class="field" formControlName="note"></textarea>
+      </p>
+      @if (addForm.touched && addForm.invalid) {
+        <p class="og-msg err" role="alert">Prénom, nom et adresse e-mail sont obligatoires.</p>
+      }
+      @if (addError()) { <p class="og-msg err" role="alert">{{ addError() }}</p> }
+      <p style="margin-top:20px">
+        <button type="submit" class="btn pri sm" [disabled]="addBusy()">
+          {{ addBusy() ? 'Enregistrement…' : 'Enregistrer' }}
+        </button>
+      </p>
+    </form>
+  }
+
+  @if (error()) { <p class="og-msg err" role="alert">{{ error() }}</p> }
+
+  <div class="og-table">
+    @if (loading()) {
+      <p class="og-empty" role="status">Chargement…</p>
+    } @else {
+      <table>
+        <thead>
+          <tr class="mono">
+            <th scope="col">Participant</th><th scope="col">Contact</th>
+            <th scope="col">Statut</th><th scope="col">Compte</th><th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (r of shown(); track r.id) {
+            <tr>
+              <td><span class="og-name">{{ r.first_name }} {{ r.last_name }}</span>
+                @if (r.note) { <br><span class="og-muted">« {{ r.note }} »</span> }
+              </td>
+              <td>{{ r.email }}@if (r.phone) { <br><span class="og-muted">{{ r.phone }}</span> }</td>
+              <td>
+                @switch (r.status) {
+                  @case ('validated') { <span class="chip ok">✓ Validé</span> }
+                  @case ('refused') { <span class="chip">✕ Refusé</span> }
+                  @default { <span class="chip wait">… En attente</span> }
+                }
+              </td>
+              <td>
+                @if (hasAccount(r)) { <span class="chip">Créé</span> }
+                @else if (r.status === 'validated') { <span class="chip wait">À inviter</span> }
+                @else { <span class="chip wait">—</span> }
+              </td>
+              <td>
+                <div class="og-actions">
+                  @if (r.status !== 'validated') {
+                    <button type="button" class="btn pri sm" [disabled]="busyId() === r.id" (click)="setStatus(r, 'validated')">Valider</button>
+                  }
+                  @if (r.status === 'pending') {
+                    <button type="button" class="btn sm" [disabled]="busyId() === r.id" (click)="setStatus(r, 'refused')">Refuser</button>
+                  }
+                  @if (r.status !== 'pending') {
+                    <button type="button" class="btn sm" [disabled]="busyId() === r.id" (click)="setStatus(r, 'pending')">Remettre en attente</button>
+                  }
+                  <button type="button" class="btn sm" [disabled]="busyId() === r.id" (click)="remove(r)">Supprimer</button>
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            <tr><td colspan="5" class="og-empty">Aucune inscription{{ query() || filter() !== 'all' ? ' pour ce filtre' : ' pour le moment' }}.</td></tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+  <p class="og-lead sm">Pour donner un accès à un inscrit validé : Supabase › Authentication › Users › « Add user » avec <strong>la même adresse e-mail</strong> que son inscription. Le lien avec sa fiche se fait automatiquement.</p>
+</div>
+</main>

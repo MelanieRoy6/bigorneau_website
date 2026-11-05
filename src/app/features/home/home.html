@@ -363,33 +363,15 @@
       <h2 class="disp join-h reveal" id="t-join">Tu viens cracher avec nous ?</h2>
       <p class="join-p reveal" style="--i:1">Viens avec ton dossard et ton meilleur crachat. Ton binôme sera tiré au sort en début de week-end.</p>
       <div class="reveal" style="--i:2">
-        <a class="btn btn-dark" href="#rejoindre">Je m'inscris
+        <a class="btn btn-dark" routerLink="/inscription">Je m'inscris
           <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <p class="mono join-note" style="margin-top:18px">Formulaire d'inscription en cours de création, en attendant rapproche-toi de la Vendée</p>
       </div>
     </div>
     <img class="join-masc reveal" src="big.png" alt="La mascotte bigorneau" style="--i:2">
   </div>
 </section>
 
-<audio id="bg-audio" loop src="La%20crique%20aux%20bigorneaux.mp3" preload="none"></audio>
-
-<button class="audio-btn" (click)="toggleAudio()" [attr.aria-label]="isPlaying ? 'Couper la musique' : 'Lancer la musique'">
-  @if (isPlaying) {
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-    </svg>
-  } @else {
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-      <line x1="23" y1="9" x2="17" y2="15"/>
-      <line x1="17" y1="9" x2="23" y2="15"/>
-    </svg>
-  }
-</button>
 
 <!-- ===================== FOOTER ===================== -->
 <footer class="foot">
@@ -399,6 +381,7 @@
       Retour en haut
     </a>
     <p class="legal">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+    <a routerLink="/orga/connexion" class="mono" style="color:var(--paper);opacity:.5;font-size:.85rem;text-decoration:none">Espace organisation</a>
   </div>
 </footer>
 

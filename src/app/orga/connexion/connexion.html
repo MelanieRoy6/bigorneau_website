@@ -1,0 +1,38 @@
+<div class="bp og og-login" style="background:var(--ink)">
+  <main class="og-center">
+    <div style="flex:1 1 320px;max-width:30rem;color:var(--paper)">
+      <p class="mono" style="color:#ffb48f">Bigorneaux Party · 5ème édition</p>
+      <h1 class="disp" style="font-size:clamp(3.4rem,9vw,7rem);margin-top:16px">Espace <span style="color:var(--accent)">orga</span></h1>
+      <p style="margin-top:20px;font-size:1.2rem;line-height:1.5;opacity:.85">Réservé aux inscrits : planning des repas, et pour les organisateurs, la gestion de l'événement.</p>
+      <a routerLink="/" class="mono" style="display:inline-flex;align-items:center;min-height:44px;margin-top:16px">← Retour au site</a>
+    </div>
+
+    <form class="card" style="flex:1 1 340px;max-width:30rem;color:var(--ink)" [formGroup]="form" (ngSubmit)="submit()" novalidate aria-labelledby="t">
+      <h2 id="t" class="disp" style="font-size:2rem">Connexion</h2>
+
+      @if (!configured) {
+        <p class="og-msg err" role="alert">Supabase n'est pas encore configuré : renseigne <code>src/app/core/supabase.config.ts</code>.</p>
+      }
+
+      <p style="margin-top:20px">
+        <label for="email" class="og-label">Adresse e-mail</label>
+        <input id="email" class="field" type="email" formControlName="email" autocomplete="username" placeholder="prenom@exemple.fr">
+      </p>
+      <p style="margin-top:20px">
+        <label for="password" class="og-label">Mot de passe</label>
+        <input id="password" class="field" type="password" formControlName="password" autocomplete="current-password">
+      </p>
+
+      @if (error()) {
+        <p class="og-msg err" role="alert">{{ error() }}</p>
+      }
+
+      <p style="margin-top:28px">
+        <button class="btn pri" type="submit" style="width:100%;justify-content:center" [disabled]="busy() || !configured">
+          {{ busy() ? 'Connexion…' : 'Se connecter' }}
+        </button>
+      </p>
+      <p style="margin-top:20px;line-height:1.5;opacity:.8">Tes identifiants t'ont été envoyés par l'organisation après validation de ton inscription.</p>
+    </form>
+  </main>
+</div>

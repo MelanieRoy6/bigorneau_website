@@ -9,31 +9,12 @@ import { Title, Meta } from '@angular/platform-browser';
   styles: ``,
 })
 export class Home implements AfterViewInit {
-  isPlaying = false;
-  private audio: HTMLAudioElement | null = null;
-
   constructor(private titleSvc: Title, private metaSvc: Meta) {
     this.titleSvc.setTitle('Bigorneaux Party — 5ème édition · Olympiades au passage du Gois');
     this.metaSvc.updateTag({ name: 'description', content: 'La Bigorneaux Party : olympiades en binôme, crachat de bigorneau, concert de rock et muscadet à gogo au passage du Gois, Beauvoir-sur-Mer. 5ème édition le week-end du 5 et 6 juin 2027.' });
   }
 
-  toggleAudio() {
-    if (!this.audio) return;
-    if (this.isPlaying) {
-      this.audio.pause();
-      this.isPlaying = false;
-    } else {
-      this.audio.play();
-      this.isPlaying = true;
-    }
-  }
-
   ngAfterViewInit() {
-    this.audio = document.querySelector<HTMLAudioElement>('#bg-audio');
-    if (this.audio) {
-      this.audio.volume = 0.45;
-      this.audio.play().then(() => { this.isPlaying = true; }).catch(() => {});
-    }
     const els = Array.from(document.querySelectorAll('.reveal'));
     const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (calm || !els.length || !('IntersectionObserver' in window)) return;
