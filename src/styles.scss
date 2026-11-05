@@ -253,6 +253,23 @@ a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
 .reg-h2{font-size:clamp(2rem,5vw,3rem);color:var(--ink);margin-bottom:16px}
 .reg-article p{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.6;max-width:72ch}
 
+/* ---------- Page FAQ ---------- */
+.faq-intro{margin-top:32px;font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.5;max-width:40rem;font-weight:600}
+.faq-list{border-top:2px solid var(--ink)}
+.faq-item{border-bottom:2px solid var(--ink)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;cursor:pointer;list-style:none;min-height:44px}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q-t{font-weight:800;line-height:.98;font-size:clamp(1.6rem,3.6vw,2.6rem);transition:transform .25s ease}
+.faq-q:hover .faq-q-t{transform:translateX(8px)}
+.faq-q:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.faq-plus{flex:0 0 auto;position:relative;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--accent);box-shadow:0 3px 0 var(--ink)}
+.faq-plus::before,.faq-plus::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:3px;margin:-1.5px 0 0 -8px;background:var(--ink);border-radius:2px;transition:transform .25s ease}
+.faq-plus::after{transform:rotate(90deg)}
+.faq-item[open] .faq-plus::after{transform:rotate(0)}
+.faq-a{padding:0 0 28px;display:flex;flex-direction:column;gap:12px}
+.faq-a p{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.6;max-width:68ch}
+.faq-more{margin-top:40px;font-size:1.1rem;line-height:1.5;max-width:44rem}
+
 @media (prefers-reduced-motion:reduce){
   .bp *,.bp *::before,.bp *::after{animation:none !important;transition:none !important}
   .plane,.trail{display:none}
