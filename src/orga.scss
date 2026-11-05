@@ -1,0 +1,130 @@
+/* Espace orga + inscription — même langage visuel que le site public :
+   bandeaux encre / sable / papier / orange, billet à bords crantés, titres Big Shoulders,
+   règles de 2 px encre. Réutilise .bp, .disp, .mono, .btn de styles.scss. */
+
+.bp.og{min-height:100vh;--card:#fbf6ec;--ok:#1d6a45;--ink-soft:rgba(16,34,47,.72)}
+
+/* ---------- Barre du haut ---------- */
+.og-top{background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gutter)}
+.og-brand{display:flex;align-items:baseline;gap:14px;color:var(--paper);text-decoration:none}
+.og-brand .mono{color:var(--accent-soft)}
+.og-nav{display:flex;flex-wrap:wrap;gap:6px}
+.og-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;text-decoration:none;font-weight:700;color:var(--paper);transition:background .2s ease}
+.og-nav a:hover{background:var(--ink-2)}
+.og-nav a.on{background:var(--accent);color:var(--ink)}
+.og-who{display:flex;align-items:center;gap:12px}
+.og-link{background:none;border:0;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;min-height:44px;padding:0 4px}
+
+/* ---------- En-tête de page (comme le règlement / les éditions) ---------- */
+.og-hero{padding:clamp(40px,6vw,80px) var(--gutter) 0}
+.og-in{max-width:1200px;margin:0 auto}
+.og-eyebrow{display:inline-block;color:var(--ink);margin-bottom:28px;padding:7px 12px;border:2px solid var(--ink);border-radius:999px;background:rgba(255,244,234,.55)}
+.og-h1{font-size:clamp(3.2rem,11vw,7.5rem);color:var(--ink)}
+.og-h1 .acc{color:var(--accent);text-shadow:.045em .045em 0 var(--ink)}
+.og-lead{margin-top:22px;max-width:40rem;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.5;font-weight:600}
+.og-lead.sm{font-size:1rem;font-weight:400}
+
+/* ---------- Billet (stats) ---------- */
+.og-ticket-wrap{max-width:1200px;margin:clamp(28px,4vw,48px) auto 0;padding:0 var(--gutter)}
+.og-ticket-shadow{filter:drop-shadow(6px 7px 0 var(--ink))}
+.og-ticket{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));background:var(--card);
+  -webkit-mask:radial-gradient(circle 16px at 0 50%,#0000 96%,#000) left/51% 100% no-repeat,radial-gradient(circle 16px at 100% 50%,#0000 96%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 16px at 0 50%,#0000 96%,#000) left/51% 100% no-repeat,radial-gradient(circle 16px at 100% 50%,#0000 96%,#000) right/51% 100% no-repeat}
+.og-cell{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:24px clamp(24px,3vw,40px)}
+.og-cell + .og-cell{border-left:2px dashed rgba(16,34,47,.3)}
+.og-cell .mono{color:var(--ink-soft)}
+.og-cell .disp{font-size:clamp(2.2rem,4vw,3.2rem)}
+.og-cell .disp.hot{color:var(--accent-deep)}
+@media (max-width:860px){
+  .og-ticket{grid-template-columns:1fr 1fr}
+  .og-cell + .og-cell{border-left:0}
+  .og-cell:nth-child(n+3){border-top:2px dashed rgba(16,34,47,.3)}
+  .og-cell:nth-child(even){border-left:2px dashed rgba(16,34,47,.3)}
+}
+
+/* ---------- Bandeaux ---------- */
+.og-band{padding:clamp(48px,7vw,96px) var(--gutter)}
+.og-band.after{margin-top:clamp(40px,6vw,80px)}
+.og-band.sand{background:var(--sand)}
+.og-band.ink{background:var(--ink);color:var(--paper)}
+.og-band.accent{background:var(--accent);color:var(--ink)}
+.og-band.paper{background:var(--paper)}
+.og-h2{font-size:clamp(2.3rem,6vw,4.4rem)}
+.og-band.ink .mono.k{color:var(--accent-soft)}
+.og-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:28px;margin-top:36px;align-items:start}
+
+/* ---------- Cartes (même rayon que les épreuves du site) ---------- */
+.card{background:var(--paper);color:var(--ink);border-radius:26px;padding:clamp(22px,3vw,32px)}
+.og-band.paper .card{background:var(--card)}
+.card.me{background:var(--accent)}
+.card.dark{background:var(--ink-2);color:var(--paper)}
+.card.pop{background:var(--card);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+
+/* ---------- Pastilles ---------- */
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 12px;border-radius:999px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font-weight:700;font-size:.9rem;white-space:nowrap}
+.chip.ok,.chip.you{background:var(--ink);color:var(--paper)}
+.chip.wait{background:transparent;border-style:dashed}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+/* ---------- Boutons (pilule + ombre pleine, comme le site) ---------- */
+.btn.sm{min-height:44px;padding:0 20px;font-size:1rem;background:var(--paper);box-shadow:0 3px 0 var(--ink);cursor:pointer}
+.btn.sm:hover{box-shadow:0 5px 0 var(--ink)}
+.btn.sm:active{box-shadow:0 1px 0 var(--ink)}
+.btn.sm.on,.btn.pri{background:var(--accent)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+button.btn{font-family:inherit;cursor:pointer}
+
+/* ---------- Champs ---------- */
+.field{display:block;width:100%;min-height:52px;padding:0 16px;border:2px solid var(--ink);border-radius:12px;background:#fff;color:var(--ink);font:inherit;font-size:1.05rem;margin-top:8px}
+textarea.field{padding:14px 16px;min-height:110px}
+.field.sm{min-height:44px;margin-top:0;font-size:1rem}
+.field:focus-visible,.btn:focus-visible,.og-link:focus-visible,.og-step button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.og-label{font-weight:700}
+.og-opt{font-weight:400;opacity:.7}
+.og-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px}
+.og-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.og-msg{margin-top:20px;padding:14px 16px;border:2px solid var(--ink);border-radius:14px;font-weight:600;line-height:1.4;background:var(--paper);color:var(--ink)}
+.og-msg.err{background:#ffe1d6;border-color:#9b2c0c;color:#5c1a06}
+.og-msg.good{background:#dcefe3;border-color:var(--ok);color:#0f3f28}
+
+/* ---------- Barre d'outils + listes en « règlement » (traits de 2 px) ---------- */
+.og-toolbar{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;justify-content:space-between}
+.og-toolbar>div{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.og-table{margin-top:28px;overflow-x:auto;border-top:2px solid var(--ink)}
+.og-table table{border-collapse:collapse;width:100%;min-width:760px}
+.og-table th{text-align:left;padding:14px 14px 10px 0;border-bottom:2px solid var(--ink)}
+.og-table td{padding:20px 14px 20px 0;border-bottom:2px solid var(--ink);vertical-align:middle}
+.og-name{font-family:'Big Shoulders Display','Archivo Narrow',Impact,sans-serif;font-weight:800;text-transform:uppercase;line-height:.95;font-size:1.7rem}
+.og-actions{display:flex;flex-wrap:wrap;gap:8px}
+.og-empty{padding:28px 0;font-weight:600}
+.og-muted{opacity:.7}
+
+.og-bar{height:22px;border:2px solid var(--ink);border-radius:999px;background:var(--paper);overflow:hidden}
+.og-bar i{display:block;height:100%;background:var(--accent);border-right:2px solid var(--ink);min-width:0}
+
+/* ---------- Planning ---------- */
+.og-day{font-family:'Big Shoulders Display','Archivo Narrow',Impact,sans-serif;font-weight:800;text-transform:uppercase;line-height:.95;font-size:clamp(2rem,3.4vw,2.8rem);border-bottom:2px solid var(--ink);padding-bottom:12px}
+.og-meal{margin-top:20px}
+.og-meal h3{font-size:1.9rem;margin-top:8px}
+
+/* ---------- Tirage ---------- */
+.og-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:2px solid var(--ink);flex-wrap:wrap}
+.og-step{display:inline-flex;align-items:center;gap:8px}
+.og-step button{min-width:44px;min-height:44px;border:2px solid var(--ink);border-radius:12px;background:#fff;font:inherit;font-size:1.2rem;font-weight:700;cursor:pointer}
+.og-step b{min-width:32px;text-align:center;font-size:1.1rem}
+.og-note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:2px dashed var(--ink);border-radius:14px;background:var(--sand);font-weight:600;line-height:1.4;margin-top:20px}
+.og-note.err{background:#ffe1d6;border-color:#9b2c0c;color:#5c1a06}
+.og-note .disp{font-size:1.6rem;white-space:nowrap}
+.og-result .mono.k{color:var(--accent-soft)}
+.og-result .og-res-meal{margin-top:18px}
+.og-result .og-res-meal .mono{color:var(--muted)}
+
+/* ---------- Connexion / inscription ---------- */
+.og-center{min-height:100vh;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:48px;padding:64px var(--gutter)}
+.og-login .card{background:var(--card);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--accent)}
+.og-page-narrow{max-width:1000px;margin:0 auto;padding:clamp(40px,8vw,96px) var(--gutter)}
+
+@media (prefers-reduced-motion:no-preference){
+  .og-bar i{transition:width .5s ease}
+}

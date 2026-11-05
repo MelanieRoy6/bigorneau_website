@@ -1,0 +1,21 @@
+<div class="bp og">
+  <header class="og-top">
+    <a class="og-brand" routerLink="/orga">
+      <span class="disp" style="font-size:1.8rem">Bigorneaux Party</span>
+      <span class="mono">Espace orga</span>
+    </a>
+    <nav class="og-nav" aria-label="Espace orga">
+      <a routerLink="/orga" routerLinkActive="on" [routerLinkActiveOptions]="{ exact: true }">Planning</a>
+      @if (auth.isAdmin()) {
+        <a routerLink="/orga/inscrits" routerLinkActive="on">Inscrits</a>
+        <a routerLink="/orga/tirage" routerLinkActive="on">Tirage</a>
+        <a routerLink="/orga/cotisations" routerLinkActive="on">Cotisations</a>
+      }
+    </nav>
+    <div class="og-who">
+      <span class="mono">{{ auth.firstName() ?? (auth.isAdmin() ? 'Admin' : '') }}</span>
+      <button type="button" class="og-link" (click)="logout()">Déconnexion</button>
+    </div>
+  </header>
+  <router-outlet />
+</div>

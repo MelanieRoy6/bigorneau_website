@@ -1,0 +1,97 @@
+<header class="og-hero">
+  <div class="og-in">
+    <p class="mono og-eyebrow">Administration</p>
+    <h1 class="disp og-h1">Le tirage <span class="acc">au sort</span></h1>
+    <p class="og-lead">Chaque participant validé met la main à la patte. Le tirage répartit les cuisiniers entre les repas en équilibrant : personne ne passe deux fois avant que tout le monde soit passé une fois.</p>
+    @if (error()) { <p class="og-msg err" role="alert">{{ error() }}</p> }
+    @if (info()) { <p class="og-msg good" role="status">{{ info() }}</p> }
+  </div>
+</header>
+
+<main class="og-band sand after">
+<div class="og-in">
+  @if (loading()) {
+    <p class="og-lead" role="status">Chargement…</p>
+  } @else {
+    <div class="og-grid" style="margin-top:0">
+
+      <section class="card" aria-labelledby="cfg">
+        <h2 id="cfg" class="disp" style="font-size:2.4rem">Les repas</h2>
+
+        @for (m of meals(); track m.id) {
+          <div class="og-row">
+            <span><strong>{{ m.label }}</strong><br><span class="mono og-muted">{{ dayLabel(m.day) }}@if (m.time_label) { · {{ m.time_label }} }</span></span>
+            <span class="og-step">
+              <button type="button" [disabled]="busy()" (click)="step(m, -1)" [attr.aria-label]="'Un cuisinier de moins pour ' + m.label">−</button>
+              <b>{{ m.cooks_needed }}</b>
+              <button type="button" [disabled]="busy()" (click)="step(m, 1)" [attr.aria-label]="'Un cuisinier de plus pour ' + m.label">+</button>
+              <button type="button" [disabled]="busy()" (click)="removeMeal(m)" [attr.aria-label]="'Supprimer ' + m.label" style="margin-left:8px">×</button>
+            </span>
+          </div>
+        } @empty {
+          <p class="og-empty">Aucun repas : ajoute-en un ci-dessous.</p>
+        }
+
+        <form [formGroup]="newMeal" (ngSubmit)="addMeal()" style="margin-top:20px" aria-label="Ajouter un repas">
+          <p class="mono">Ajouter un repas</p>
+          <div class="og-grid2" style="margin-top:10px;gap:12px">
+            <p><label for="nl" class="og-label">Nom</label><input id="nl" class="field sm" style="margin-top:6px" formControlName="label" placeholder="Brunch du dimanche"></p>
+            <p><label for="nd" class="og-label">Jour</label><input id="nd" class="field sm" style="margin-top:6px" type="date" formControlName="day"></p>
+            <p><label for="nt" class="og-label">Moment <span class="og-opt">(facultatif)</span></label><input id="nt" class="field sm" style="margin-top:6px" formControlName="time_label" placeholder="Déjeuner"></p>
+            <p><label for="nc" class="og-label">Cuisiniers</label><input id="nc" class="field sm" style="margin-top:6px" type="number" min="1" max="30" formControlName="cooks_needed"></p>
+          </div>
+          <button type="submit" class="btn sm" style="margin-top:14px" [disabled]="busy()">+ Ajouter</button>
+        </form>
+
+        <div class="og-note" [class.err]="balance().kind === 'warn'">
+          <span class="disp">{{ slots() }} / {{ participants() }}</span>
+          <span>{{ slots() }} place(s) de cuisine pour {{ participants() }} participant(s) validé(s). {{ balance().text }}</span>
+        </div>
+
+        <div class="og-actions" style="margin-top:24px">
+          <button type="button" class="btn pri" [disabled]="busy() || participants() === 0 || meals().length === 0" (click)="draw()">
+            {{ hasDraw() ? 'Relancer le tirage' : 'Lancer le tirage' }}
+          </button>
+          @if (hasDraw()) {
+            <button type="button" class="btn sm" [disabled]="busy()" (click)="clear()">Effacer le tirage</button>
+          }
+        </div>
+      </section>
+
+      <section class="card dark og-result" aria-labelledby="res">
+        <p class="mono k">
+          @if (!hasDraw()) { Pas encore de tirage }
+          @else if (settings()?.planning_published) { Planning publié }
+          @else { Brouillon · non publié }
+        </p>
+        <h2 id="res" class="disp" style="font-size:2.4rem;margin-top:8px">Résultat</h2>
+
+        @for (r of results(); track r.meal.id) {
+          <div class="og-res-meal">
+            <p class="mono">{{ r.meal.label }} · {{ r.day }}</p>
+            <div class="chips" style="margin-top:8px">
+              @for (c of r.cooks; track c.registration_id) { <span class="chip">{{ c.display_name }}</span> }
+              @empty { <span class="chip wait" style="color:var(--paper);border-color:var(--paper)">—</span> }
+            </div>
+          </div>
+        }
+
+        @if (hasDraw()) {
+          <p style="margin-top:20px;opacity:.8;line-height:1.5">
+            @if (settings()?.planning_published) {
+              Les participants voient déjà leur affectation dans le planning.
+            } @else {
+              Les participants voient leur affectation dans le planning dès que tu publies.
+            }
+          </p>
+          @if (settings()?.planning_published) {
+            <button type="button" class="btn sm" style="margin-top:16px" [disabled]="busy()" (click)="setPublished(false)">Masquer le planning</button>
+          } @else {
+            <button type="button" class="btn pri" style="margin-top:16px" [disabled]="busy()" (click)="setPublished(true)">Publier le planning</button>
+          }
+        }
+      </section>
+    </div>
+  }
+</div>
+</main>
