@@ -42,13 +42,13 @@ export class Faq {
     {
       q: 'Peut-on choisir son binôme ?',
       a: [
-        "Non. Article 1 du règlement : les binômes sont tirés au sort en début de week-end. Pas de choix, pas de négociation, pas de pot-de-vin (le muscadet est accepté, mais ne change rien).",
+        "Non. Article 2 du règlement : les équipes se forment à la courte paille, le vendredi soir à Beauvoir. Pas de choix, pas de négociation, pas de pot-de-vin (le muscadet est accepté, mais ne change rien).",
       ],
     },
     {
       q: 'Et si l’arbitre se trompe ?',
       a: [
-        "Les arbitres sont les vainqueurs de l'édition précédente. Toute décision arbitrale est définitive, irrévocable, et généralement contestée. La contestation fait partie du spectacle.",
+        "Les arbitres sont les vainqueurs de l'édition précédente, qui remettent leur titre en jeu. Toute décision arbitrale est définitive, irrévocable, et généralement contestée. La contestation fait partie du spectacle.",
       ],
     },
     {
