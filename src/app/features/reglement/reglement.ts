@@ -10,6 +10,6 @@ import { Title, Meta } from '@angular/platform-browser';
 export class Reglement {
   constructor(private titleSvc: Title, private metaSvc: Meta) {
     this.titleSvc.setTitle('Le règlement des olympiades — Bigorneaux Party');
-    this.metaSvc.updateTag({ name: 'description', content: 'Binômes tirés au sort, épreuves imaginées par les vainqueurs, trophée et muscadet officiel : découvre les règles de la Bigorneaux Party.' });
+    this.metaSvc.updateTag({ name: 'description', content: "Vainqueurs arbitres, équipes tirées à la courte paille, mime de bigorneau, trophée BWCP et muscadet officiel : découvre les règles de la Bigorneaux Party." });
   }
 }
